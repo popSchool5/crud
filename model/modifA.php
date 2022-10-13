@@ -1,6 +1,6 @@
 <?php 
 session_start(); 
-require('../assets/co_bdd.php'); 
+// require('../assets/co_bdd.php'); 
 if (array_key_exists('image', $_FILES)) {
     // Si il n'ya pas d'erreur 
     if ($_FILES['image']['error'] == 0) {
