@@ -6,13 +6,13 @@ if (empty($_SESSION)) {
     exit;
 }
 require('./assets/header.php');
-require('./assets/co_bdd.php'); 
-require('./function.php'); 
+require('./assets/co_bdd.php');
+require('./function.php');
 
-$articles = getArticles($bdd,$_SESSION['id']);
+$articles = getArticles($bdd, $_SESSION['id']);
 
-if(isset($_GET['action']) && $_GET['action'] == "supp"){
-    deleteArticle($bdd,$_GET['id']); 
+if (isset($_GET['action']) && $_GET['action'] == "supp") {
+    deleteArticle($bdd, $_GET['id']);
 }
 
 ?>
@@ -72,7 +72,7 @@ if(isset($_GET['action']) && $_GET['action'] == "supp"){
     <div class="">
         <h2 class="text-center m-3">Mes articles</h2>
         <style>
-            .mesArticles{
+            .mesArticles {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-around;
@@ -81,18 +81,19 @@ if(isset($_GET['action']) && $_GET['action'] == "supp"){
         </style>
         <div class="mesArticles">
 
-        <?php foreach($articles as $article): ?>
+            <?php foreach ($articles as $article) : ?>
 
-            <div class="card" style="width: 25rem;">
-                <img src="./assets/uploads/<?= htmlspecialchars($article['image']) ?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= htmlspecialchars($article['titre']) ?></h5>
-                    <p class="card-text"><?= htmlspecialchars($article['contenu']) ?>.</p>
-                    <a href="mon_compte.php?id=<?= htmlspecialchars($article["id"]) ?>&action=supp" class="btn btn-danger">Supprimer</a>
+                <div class="card" style="width: 25rem;">
+                    <img src="./assets/uploads/<?= htmlspecialchars($article['image']) ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($article['titre']) ?></h5>
+                        <p class="card-text"><?= htmlspecialchars($article['contenu']) ?>.</p>
+                        <a href="mon_compte.php?id=<?= htmlspecialchars($article["id"]) ?>&action=supp" class="btn btn-danger">Supprimer</a>
+                        <a href="./model/modifArticle.php?id=<?= htmlspecialchars($article["id"]) ?>&action=modif" class="btn btn-warning">Modifier</a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-          
+            <?php endforeach; ?>
+
         </div>
     </div>
 </div>

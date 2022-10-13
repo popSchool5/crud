@@ -6,10 +6,6 @@ if (empty($_SESSION)) {
     exit;
 }
 require('./assets/co_bdd.php'); 
-$req = "SELECT articles.*, utilisateur.id as uid, utilisateur.nom FROM articles INNER JOIN utilisateur ON articles.id_utilisateur = utilisateur.id"; 
-$statement = $bdd -> query($req); 
-$articles = $statement -> fetchAll(); 
-
 require('./assets/header.php');
 ?>
 
